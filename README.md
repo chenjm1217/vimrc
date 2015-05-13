@@ -8,10 +8,10 @@ linux/windows vimrc file
 [https://github.com/gmarik/Vundle.vim][VD]
 
 其中，`Youcompleteme`插件的安装较大，需要200M以上空间，需要耐心等待
-[https://github.com/Valloric/YouCompleteMe][YC]
+[Valloric/YouCompleteMe][YC]
 
 YouCompleteMe在CentOS6.3及以上系统下的编译方法可以参考
-[http://note.youdao.com/share/?id=bba012f66fbab91e4c9fabe4ad6f3e7e&type=note][INSTALL]
+[VIM安装YouCompleteMe][INSTALL]
 
 [VD]: http://sublimetext.com
 [YC]:https://github.com/Valloric/YouCompleteMe

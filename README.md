@@ -12,14 +12,14 @@ linux/windows vimrc file
 安装完`Vundle`之后，安装需要的插件。在vim下执行如下命令，开始安装
 > :PluginInstall
 
-具体可以参考
+具体可以参考  
 [https://github.com/gmarik/Vundle.vim][VD]
 
 其中，`YouCompleteMe`插件的安装较大，需要200M以上空间，需要耐心等待
-`YouCompleteMe`的官方链接为
+`YouCompleteMe`的官方链接为  
 [Valloric/YouCompleteMe][YC]
 
-另外，`YouCompleteMe`在CentOS6.3及以上系统下的编译方法可以参考我之前的笔记
+另外，`YouCompleteMe`在CentOS6.3及以上系统下的编译方法可以参考我之前的笔记  
 [VIM安装YouCompleteMe][INSTALL]
 
 [VD]:https://github.com/gmarik/Vundle.vim

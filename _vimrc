@@ -10,8 +10,8 @@
 "	    for OpenVMS:  sys$login:.vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Edit by chenjunming since 2015/04/14
-" Last modify in 2015/04/14
-" VIM Version = 7.2
+" Last change: 2015/05/13
+" VIM Version = 7.4
 " Ref Person: RenMiaoJian
 " Ref UrL: http://www.cnblogs.com/zhongcq/p/3642794.html
 " Ref UrL: http://blog.csdn.net/redguardtoo/article/details/1172136
@@ -488,7 +488,6 @@ map <leader>av :AV<cr>
 " YouCompleateMe
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
-set completeopt=menu,longest		"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif		"离开插入模式后自动关闭预览窗口
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"		"回车即选中当前项
 "上下左右键的行为 会显示其他信息
@@ -620,6 +619,9 @@ set ignorecase
 set selection=inclusive
 " set selection=exclusive
 
+" 只在下拉菜单中显示匹配项目,自动插入所有匹配项目的相同文本
+set completeopt=menu,longest
+
 " 在windows版本中vim的退格键模式默认与vi兼容, 重新配置backspace键工作方式
 set backspace=indent,eol,start
 
@@ -659,22 +661,33 @@ set encoding=utf-8
 " 当打开文件时，自动按照以下方式自动判断编码并解码
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-" 很多插件都会要求的配置检测文件类型
 " 开启文件类型自动识别，启用文件类型插件，启用针对文件类型的自动缩进
-filetype on 
-filetype plugin on 
+filetype on
+filetype plugin on
 filetype indent on
 filetype plugin indent on
 
 " 如果是c/c++类型
 autocmd FileType c,cpp :set number 
+" 代码折叠
 autocmd FileType c,cpp :set foldmethod=syntax 
+" 对齐
 autocmd FileType c,cpp :set cindent
 
 " 如果是python文件
 autocmd FileType python :set number 
 autocmd FileType python :set foldmethod=syntax 
 autocmd FileType python :set smartindent
+
+" 折叠快捷键
+" zc:折叠当前
+" zo:打开当前
+" zn:打开所有
+" zN:折叠所有
+
+" 粘贴文本时，不自动缩排
+set paste
+" set nopaste
 
 " 字体的设置
 set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI

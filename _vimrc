@@ -503,6 +503,7 @@ let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
 
+
 let g:ycm_collect_identifiers_from_tags_files=1	" 开启 YCM 基于标签引擎
 let g:ycm_min_num_of_chars_for_completion=2	"从第2个键入字符就开始罗列匹配项
 let g:ycm_cache_omnifunc=0	" 禁止缓存匹配项,每次都重新生成匹配项
@@ -670,13 +671,13 @@ filetype plugin indent on
 " 如果是c/c++类型
 autocmd FileType c,cpp :set number 
 " 代码折叠
-autocmd FileType c,cpp :set foldmethod=syntax 
+"autocmd FileType c,cpp :set foldmethod=syntax 
 " 对齐
 autocmd FileType c,cpp :set cindent
 
 " 如果是python文件
 autocmd FileType python :set number 
-autocmd FileType python :set foldmethod=syntax 
+"autocmd FileType python :set foldmethod=syntax 
 autocmd FileType python :set smartindent
 
 " 折叠快捷键
@@ -927,3 +928,4 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 "
 "nmap <leader>fd :se ff=dos<cr>
 "nmap <leader>fu :se ff=unix<cr>
+set ruler

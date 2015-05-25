@@ -544,20 +544,18 @@ endif
 
 autocmd BufEnter * lcd %:p:h
 
-"if has("autocmd")
-"	filetype plugin indent on "根据文件进行缩进
-"	augroup vimrcEx
-"	au!
-"	autocmd FileType text setlocal textwidth=78
-"	autocmd BufReadPost *
-"		\ if line("'\"") > 1 && line("'\"") <= line("$") |
-"		\ exe "normal! g`\"" |
-"		\ endif
-"	augroup END
-"else
-"	"智能缩进，相应的有cindent，官方说autoindent可以支持各种文件的缩进，但是效果会比只支持C/C++的cindent效果会差一点，但笔者并没有看出来
-"	set autoindent " always		" set autoindenting on
-"endif " has("autocmd")
+" 指向最后打开位置
+if has("autocmd")
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif " has("autocmd")
 
 " 关闭vim对vi的兼容模式，建议设置，否则会有很多不兼容的问题
 set nocompatible
@@ -929,3 +927,5 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 "nmap <leader>fd :se ff=dos<cr>
 "nmap <leader>fu :se ff=unix<cr>
 set ruler
+
+

@@ -652,7 +652,7 @@ set wildmenu
 set history=1000
 
 " 设置备份,更改文件时生成备份文件~
-set backup
+set nobackup
 
 " 设置当前编码方式
 set encoding=utf-8

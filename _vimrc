@@ -668,11 +668,11 @@ filetype indent on
 filetype plugin indent on
 
 " 如果是c/c++类型
-autocmd FileType c,cpp :set number 
+autocmd FileType c,cpp,h,cc :set number 
 " 代码折叠
 "autocmd FileType c,cpp :set foldmethod=syntax 
 " 对齐
-autocmd FileType c,cpp :set cindent
+autocmd FileType c,cpp,h,cc :set cindent
 
 " 如果是python文件
 autocmd FileType python :set number 

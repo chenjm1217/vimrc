@@ -598,7 +598,7 @@ set lbr
 set fo+=mB
 
 " 设置按退格键时可以一次删除4个空格
-" set softtabstop=4
+set softtabstop=4
 
 " 自动换行
 set wrap 

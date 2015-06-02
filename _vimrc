@@ -576,7 +576,8 @@ color desert
 set background=dark
 
 " 设置C风格的缩进 
-set cindent
+set autoindent
+set smartindent
 
 " 将Tab键替换为空格
 set expandtab
@@ -651,8 +652,8 @@ set wildmenu
 " 设置历史记录条数
 set history=1000
 
-" 设置备份,更改文件时生成备份文件~
-set backup
+" 设置备份,更改文件时不生成备份文件~
+set nobackup
 
 " 设置当前编码方式
 set encoding=utf-8
@@ -684,10 +685,6 @@ autocmd FileType python :set smartindent
 " zn:打开所有
 " zN:折叠所有
 
-" 粘贴文本时，不自动缩排
-set paste
-" set nopaste
-
 " 字体的设置
 set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
 
@@ -699,8 +696,7 @@ set ambiwidth=double
 
 " 防止linux终端下无法拷贝
 if has('mouse')
-	set mouse=a
-	set mouse-=i
+	set mouse=c
 endif
 
 " 当意外关闭时生成恢复文件，为了保险起见还是部取消了
@@ -926,6 +922,3 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 "
 "nmap <leader>fd :se ff=dos<cr>
 "nmap <leader>fu :se ff=unix<cr>
-set ruler
-
-

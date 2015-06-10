@@ -630,6 +630,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+map <C-down> <C-W>j
+map <C-up> <C-W>k
+map <C-left> <C-W>h
+map <C-right> <C-W>l
+
 " ¹Ø±Õµ±Ç°buffer
 map <leader>bd :Bclose<cr>
 

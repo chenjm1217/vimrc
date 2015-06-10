@@ -466,7 +466,7 @@ let Tlist_Process_File_Always = 0					" 是否一直处理tags.1:处理;0:不处理。不是一
 let Tlist_Inc_Winwidth = 0
 " Ctrl+]   Ctrl+o    Ctrl+T
 
-nmap <silent><F4> :TagbarToggle<CR>	" ,tb 打开tagbar窗口
+nmap <silent><F3> :TagbarToggle<CR>	" ,tb 打开tagbar窗口
 nmap <leader>tb :TagbarToggle<CR>	" ,tb 打开tagbar窗口
 let g:tagbar_autofocus = 1
 let g:tagbar_width = 30
@@ -519,7 +519,7 @@ let g:ycm_complete_in_strings = 1
 "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 
-nnoremap <silent><F11> :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
+nnoremap <silent><C-d> :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -603,6 +603,12 @@ set softtabstop=4
 " 自动换行
 set wrap 
 
+" 命令行高
+set cmdheight=1
+
+" 缓冲区空则隐藏
+set hid
+
 " 高亮显示结果
 set hlsearch
 
@@ -611,6 +617,31 @@ set incsearch
 
 " 设置搜索时忽略大小写
 set ignorecase
+
+" 尽可能智能搜索
+set smartcase
+
+" 启用通配符
+set magic
+
+" 切换窗口 
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" 关闭当前buffer
+map <leader>bd :Bclose<cr>
+
+" 关闭所有buffer
+map <leader>ba :1,1000 bd!<cr>
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" 格式化状态栏 
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \Line:\ %l
 
 " 使用Shift+方向选中
 "set keymodel=startsel,stopsel
@@ -646,6 +677,9 @@ set showcmd
 " 在命令模式下使用 Tab 自动补全的时候，将补全内容使用一个漂亮的单行菜单形式显示出来
 set wildmenu
 
+" Tab补全的时候忽略编译文件 
+set wildignore=*.o,*~,*.pyc
+
 " 设置匹配模式 类似当输入一个左括号时会匹配相应的那个右括号
  set showmatch
 
@@ -657,6 +691,9 @@ set nobackup
 
 " 设置当前编码方式
 set encoding=utf-8
+
+" 设置文件类型
+set ffs=unix,dos,mac
 
 " 当打开文件时，自动按照以下方式自动判断编码并解码
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1

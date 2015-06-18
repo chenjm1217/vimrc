@@ -270,7 +270,7 @@ Plugin 'fholgado/minibufexpl.vim'
 "" 效率提升杀手锏，跳转到光标后任意位置
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 " 自动补全
 " https://github.com/Valloric/YouCompleteMe
 " A code-completion engine for Vim
@@ -701,6 +701,9 @@ set history=1000
 
 " 设置备份,更改文件时不生成备份文件~
 set nobackup
+
+" 粘贴时不自动缩进
+:set paste
 
 " 设置当前编码方式
 set encoding=utf-8

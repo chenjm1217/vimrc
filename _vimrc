@@ -702,9 +702,6 @@ set history=1000
 " 设置备份,更改文件时不生成备份文件~
 set nobackup
 
-" 粘贴时不自动缩进
-:set paste
-
 " 设置当前编码方式
 set encoding=utf-8
 
@@ -751,6 +748,10 @@ set ambiwidth=double
 if has('mouse')
 	set mouse=c
 endif
+
+
+" 粘贴时不自动缩进
+:set pastetoggle=<F11>
 
 " 当意外关闭时生成恢复文件，为了保险起见还是部取消了
 " set noswapfile

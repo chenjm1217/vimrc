@@ -474,11 +474,11 @@ let g:tagbar_width = 30
 
 
 let g:miniBufExplMaxSize = 3	" 设置最大高度 
-nmap <leader>m :MBEToggle<cr>
-nmap <leader>n :MBEbn<cr>
-nmap <leader>p :MBEbp<cr>
-nmap <leader>f :MBEbf<cr>
-nmap <leader>b :MBEbb<cr>
+nmap <leader>bm :MBEToggle<cr>
+nmap <leader>bn :MBEbn<cr>
+nmap <leader>bp :MBEbp<cr>
+nmap <leader>bf :MBEbf<cr>
+nmap <leader>bb :MBEbb<cr>
 
 
 " :A 在.h文件和.cpp文件之间切换
@@ -634,6 +634,14 @@ map <C-down> <C-W>j
 map <C-up> <C-W>k
 map <C-left> <C-W>h
 map <C-right> <C-W>l
+
+" 分割窗口
+map <leader>v :vsplit<cr>
+map <leader>h :split<cr>
+
+" 关闭屏幕
+map <leader>c :close<cr>
+map <leader>o :only<cr>
 
 " 关闭当前buffer
 map <leader>bd :Bclose<cr>

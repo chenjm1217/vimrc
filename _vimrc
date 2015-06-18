@@ -123,6 +123,17 @@ Plugin 'majutsushi/tagbar'
 " Vim plugin that displays tags in a window, ordered by scope
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'terryma/vim-multiple-cursors'
+" 像sublime一样同时编辑多个标签
+" https://github.com/terryma/vim-multiple-cursors
+" True Sublime Text style multiple selections for Vim 
+" Default mapping
+" let g:multi_cursor_next_key='<C-n>'
+" let g:multi_cursor_prev_key='<C-p>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<Esc>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'fholgado/minibufexpl.vim'
 " 文件打开记录
 " https://github.com/fholgado/minibufexpl.vim
@@ -746,14 +757,15 @@ set ambiwidth=double
 
 " 防止linux终端下无法拷贝
 if has('mouse')
-	set mouse=c
+	"set mouse=c
+    set mouse=v
 endif
 
 
 " 粘贴时不自动缩进
 :set pastetoggle=<F11>
 
-" 当意外关闭时生成恢复文件，为了保险起见还是部取消了
+" 当意外关闭时生成恢复文件，为了保险起见还是不取消了
 " set noswapfile
 
 " 突出显示当前行/列

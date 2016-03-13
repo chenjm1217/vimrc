@@ -1,641 +1,144 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Jul 02
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Edit by chenjunming since 2015/04/14
-" Last change: 2015/05/13
-" VIM Version = 7.4
-" Ref Person: RenMiaoJian
-" Ref UrL: http://www.cnblogs.com/zhongcq/p/3642794.html
-" Ref UrL: http://blog.csdn.net/redguardtoo/article/details/1172136
-" Ref UrL: http://easwy.com/blog/archives/advanced-vim-skills-catalog/
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" Vundle:https://github.com/gmarik/Vundle.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Install
-" 1. get from github: git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
-" 2. set edit .vimrc as below
-" 3. install the Vundle in vim :PluginInstall
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
+" ä»£ç æç¤º
+Plugin 'Valloric/YouCompleteMe'
 
+" ä¸»é¢˜è‰²
+Plugin 'altercation/vim-colors-solarized'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'altercation/vim-colors-solarized'
-"" ´°¿ÚÖ÷Ìâ
-"" https://github.com/altercation/vim-colors-solarized
-""let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
-"let g:solarized_contrast="normal"
-"let g:solarized_visibility="normal"
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'tomasr/molokai'
-"" ´°¿ÚÖ÷Ìâ
-"" https://github.com/tomasr/molokai
-"let g:molokai_original=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'The-NERD-tree'
-" Ä¿Â¼Ê÷µ¼º½
-" https://github.com/vim-scripts/The-NERD-tree
-" A tree explorer plugin for navigating the filesystem
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Plugin 'jlanzarotta/bufexplorer'
-""" »º´æ²é¿´
-""" https://github.com/jlanzarotta/bufexplorer
-""" BufExplorer Plugin for Vim
-""nmap <silent><leader><F3> :BufExplorerVerticalSplit<cr>
-""nmap <silent><F3> :BufExplorerHorizontalSplit<cr>
-""nmap <leader>bv :BufExplorerVerticalSplit<cr>
-""nmap <leader>bh :BufExplorerHorizontalSplit<cr>
-""let g:bufExplorerDefaulthelp=0		" Don't show the default help
-""let g:bufExplorerShowRelativePath=1	" Show relative paths
-""let g:bufExplorerSortBy="mru"		" Sort by most recently used
-""let g:bufExplorerSplitRight=0		" Split left
-""let g:bufExplorerSplitVertical=1	" Split vertical
-""let g:bufExplorerSplitVertSize=25	" Split width
-""let g:bufExplorerUseCurrentWindow=1	" Open window in new window
-""let g:bufExplorerMaxHeight = 30		" Set the max height
-""let g:bufExplorerMinHeight = 5		" Set the min height
-""autocmd BufWinEnter \[Buf\List\] setl nonumber
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'taglist.vim'
-" ±êÇ©
-" https://github.com/vim-scripts/taglist.vim
-" Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'OmniCppComplete'
-" ´úÂë²¹È«
-" https://github.com/vim-scripts/OmniCppComplete
-" C/C++ omni-completion with ctags database
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" åœ¨.cppå’Œ.hä¹‹é—´åˆ‡æ¢
 Plugin 'a.vim'
-" ÔÚÍ·ÎÄ¼ş.hºÍÊµÏÖ.cppÖ®¼äÇĞ»»
-" https://github.com/vim-scripts/a.vim
-" Alternate Files quickly (.c --> .h etc)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'majutsushi/tagbar'
-" ±êÇ©µ¼º½,±Ètaglist¸üÊÊºÏC++,ÄÜ¹»°´Àà´¦Àí
-" https://github.com/majutsushi/tagbar
-" Vim plugin that displays tags in a window, ordered by scope
+" è¯­æ³•åˆ†æ
+Plugin 'scrooloose/syntastic'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python æç¤º
+Plugin 'davidhalter/jedi'
+
+" åŒæ—¶ç¼–è¾‘å¤šä¸ªæ ‡ç­¾ï¼Œé‡æ„ç¥å™¨
 Plugin 'terryma/vim-multiple-cursors'
-" ÏñsublimeÒ»ÑùÍ¬Ê±±à¼­¶à¸ö±êÇ©
-" https://github.com/terryma/vim-multiple-cursors
-" True Sublime Text style multiple selections for Vim 
-" Default mapping
-" let g:multi_cursor_next_key='<C-n>'
-" let g:multi_cursor_prev_key='<C-p>'
-" let g:multi_cursor_skip_key='<C-x>'
-" let g:multi_cursor_quit_key='<Esc>'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'fholgado/minibufexpl.vim'
-" ÎÄ¼ş´ò¿ª¼ÇÂ¼
-" https://github.com/fholgado/minibufexpl.vim
-" Elegant buffer explorer - takes very little screen space
+" è¡¥å…¨æ‹¬å·å’Œå¼•å·
+Plugin 'Raimondi/delimitMate'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'winmanager'
-"" ´°¿Ú¹ÜÀíÆ÷
-"" https://github.com/vim-scripts/winmanager
-"" A windows style IDE for Vim 6.0
-""Used by winmanager
-"let g:NERDTree_title="[NERD Tree]" 
-"function! NERDTree_Start()
-"	exec 'NERDTree'
-"endfunction
-"function! NERDTree_IsValid()
-"	return 1
-"endfunction
-"let g:winManagerWindowLayout = "NERDTree|BufExplorer"
-"let g:winManagerWidth = 25
-"let g:defaultExplorer = 0
-"nmap <C-W><C-F> :FirstExplorerWindow<cr>
-"nmap <C-W><C-B> :BottomExplorerWindow<cr>
-"nmap wm :WMToggle<cr>
-"nmap <silent><leader><F2> :WMToggle<cr>:q<cr>:TagbarToggle<cr>		" Open/Close WinManager
-"
-"let g:bufExplorerSortBy = "name"
-"
-""let g:NERDTree_title = "NERDTree"
-""function! NERDTree_Start()
-"""	exe 'NERDTree'
-""endfunction
-""function! NERDTree_IsValid()
-"""	return 1
-""endfunction
-""let g:winManagerWindowLayout='NERDTree'
-"""let g:winManagerWindowLayout='NERDTree|TagList'  
-""let g:winManagerWidth=35			" Set the window width
-""let g:defaultExplorer=1
-""nmap <C-W><C-F> :FirstExplorerWindow<cr>	" Tab to the first window
-""nmap <C-W><C-B> :BottomExplorerWindow<cr>	" Tab to he bottom window
-"""nmap <silent> <leader>wm :WMToggle<cr>		" Open/Close WinManager
-""nmap <silent> <F4> :WMToggle<cr>		" Open/Close WinManager
-"
-"
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Plugin 'fholgado/minibufexpl.vim'
-""" ¶àÎÄµµ±à¼­
-""" https://github.com/fholgado/minibufexpl.vim
-""" Elegant buffer explorer - takes very little screen space
-""" ¶àÎÄ¼şÇĞ»»£¬Ò²¿ÉÊ¹ÓÃÊó±êË«»÷ÏàÓ¦ÎÄ¼şÃû½øĞĞÇĞ»»
-""let g:miniBufExplMapWindowNavVim    = 1
-""let g:miniBufExplMapWindowNavArrows = 1
-""let g:miniBufExplMapCTabSwitchBufs  = 1
-""let g:miniBufExplModSelTarget       = 1
-""" ½â¾öFileExplorer´°¿Ú±äĞ¡ÎÊÌâ
-""let g:miniBufExplForceSyntaxEnable = 1
-""let g:miniBufExplorerMoreThanOne=2
-""let g:miniBufExplCycleArround=1
-""" buffer ÇĞ»»¿ì½İ¼ü£¬Ä¬ÈÏ·½Ïò¼ü×óÓÒ¿ÉÒÔÇĞ»»buffer
-""map <C-Tab> :MBEbn<cr>
-""map <C-S-Tab> :MBEbp<cr>
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'kien/ctrlp.vim'
-"" ÎÄ¼şËÑË÷ 
-"" https://github.com/kien/ctrlp.vim
-"" Fuzzy file, buffer, mru, tag, etc finder.
-"" CtrlP»áÑØ×Åvim´ò¿ªµÄÄ¿Â¼Ò»Ö±ÏòÉÏ²éÕÒÀàËÆ.git/.svnµÈÕâÑùµÄÏîÄ¿¹ÜÀíµÄÄ¿Â¼£¬Èç¹ûÕÒµ½Ôò½«Õâ¸ö×÷ÎªÏîÄ¿µÄ¸ùÄ¿Â¼
-"" ´ò¿ªctrlpËÑË÷
-"let g:ctrlp_map = '<leader>ff'
-"let g:ctrlp_cmd = 'CtrlP'
-"" Ïàµ±ÓÚmru¹¦ÄÜ£¬show recently opened files
-"map <leader>fp :CtrlPMRU<CR>
-""set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
-"let g:ctrlp_custom_ignore = {
-"    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-"	\ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
-"\ }
-""\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-"let g:ctrlp_working_path_mode=0
-"let g:ctrlp_match_window_bottom=1
-"let g:ctrlp_max_height=15
-"let g:ctrlp_match_window_reversed=0
-"let g:ctrlp_mruf_max=500
-"let g:ctrlp_follow_symlinks=1
+" ç›®å½•æµè§ˆ
+Plugin 'The-NERD-tree'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'Lokaltog/vim-powerline'
-" ÃÀ»¯×´Ì¬À¸
-" https://github.com/Lokaltog/vim-powerline
-" The ultimate vim statusline utility. DEPRECATED in favor of Lokaltog/powerline.
-"let g:Powerline_symbols = 'unicode'
+" tag æµè§ˆ
+Plugin 'majutsushi/tagbar'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'kien/rainbow_parentheses.vim'
-"" À¨ºÅÆ¥Åä¸ßÁÁ
-"" https://github.com/kien/rainbow_parentheses.vim
-"" Better Rainbow Parentheses
-"let g:rbpt_colorpairs = [
-"    \ ['brown',       'RoyalBlue3'],
-"    \ ['Darkblue',    'SeaGreen3'],
-"    \ ['darkgray',    'DarkOrchid3'],
-"    \ ['darkgreen',   'firebrick3'],
-"    \ ['darkcyan',    'RoyalBlue3'],
-"    \ ['darkred',     'SeaGreen3'],
-"    \ ['darkmagenta', 'DarkOrchid3'],
-"    \ ['brown',       'firebrick3'],
-"    \ ['gray',        'RoyalBlue3'],
-"    \ ['black',       'SeaGreen3'],
-"    \ ['darkmagenta', 'DarkOrchid3'],
-"    \ ['Darkblue',    'firebrick3'],
-"    \ ['darkgreen',   'RoyalBlue3'],
-"    \ ['darkcyan',    'SeaGreen3'],
-"    \ ['darkred',     'DarkOrchid3'],
-"    \ ['red',         'firebrick3'],
-"    \ ]
-"let g:rbpt_max = 40
-"let g:rbpt_loadcmd_toggle = 0
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'nathanaelkane/vim-indent-guides'
-"" ¿ÉÊÓ»¯Ëõ½ø 
-"" https://github.com/nathanaelkane/vim-indent-guides 
-"" A Vim plugin for visually displaying indent levels in code
-"let g:indent_guides_enable_on_vim_startup = 0  " Ä¬ÈÏ¹Ø±Õ
-"let g:indent_guides_guide_size            = 1  " Ö¸¶¨¶ÔÆëÏßµÄ³ß´ç
-"let g:indent_guides_start_level		  = 2  " ´ÓµÚ¶ş²ã¿ªÊ¼¿ÉÊÓ»¯ÏÔÊ¾Ëõ½ø
-"" \ig ´ò¿ª/¹Ø±Õ vim-indent-guides
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'bronson/vim-trailing-whitespace'
-"" ±ê¼ÇÎŞĞ§¿Õ¸ñ 
-"" https://github.com/bronson/vim-trailing-whitespace
-"" Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
-"" ½«´úÂëĞĞ×îºóÎŞĞ§µÄ¿Õ¸ñ±êºì
-"map <leader><space> :FixWhitespace<cr>	" ,+space È¥µôÄ©Î²¿Õ¸ñ
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'Lokaltog/vim-easymotion'
-"" ¿ìËÙÒÆ¶¯
-"" https://github.com/Lokaltog/vim-easymotion
-"" Vim motions on speed!
-"" Ğ§ÂÊÌáÉıÉ±ÊÖïµ£¬Ìø×ªµ½¹â±êºóÈÎÒâÎ»ÖÃ
+" ç¥çº§æ’ä»¶ï¼Œå¿«é€Ÿè·³è½¬ï¼Œé»˜è®¤<leader><leader>w/f{char}/l{line-num}
+Plugin 'easymotion/vim-easymotion'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'Valloric/YouCompleteMe'
-" ×Ô¶¯²¹È«
-" https://github.com/Valloric/YouCompleteMe
-" A code-completion engine for Vim
+" æŸ¥æ‰¾æ–‡ä»¶ï¼Œç›´æ¥Ctrl+p,æ¯”lookupfilesæ›´å¥½ç”¨
+Plugin 'ctrlpvim/ctrlp.vim'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Plugin 'SirVer/ultisnips'
-"" ºê¶¨Òå²¹È«
-"" https://github.com/SirVer/ultisnips
-"" UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
-""let g:UltiSnipsExpandTrigger = "<tab>"
-""let g:UltiSnipsJumpForwardTrigger = "<tab>"
-""let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-""¶¨Òå´æ·Å´úÂëÆ¬¶ÎµÄÎÄ¼ş¼Ğ.vim/snippetsÏÂ£¬Ê¹ÓÃ×Ô¶¨ÒåºÍÄ¬ÈÏµÄ£¬½«»áµÄµ½È«¾Ö£¬ÓĞ³åÍ»µÄ»áÌáÊ¾
-""let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultisnips/UltiSnips"]
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'scrooloose/nerdcommenter'
-"" ¿ìËÙ¼Ó¼õ×¢ÊÍ
-"" https://github.com/scrooloose/nerdcommenter
-"" Vim plugin for intensely orgasmic commenting
-"" <leader>cc£¬×¢ÊÍµ±Ç°Ñ¡ÖĞÎÄ±¾£¬Èç¹ûÑ¡ÖĞµÄÊÇÕûĞĞÔòÔÚÃ¿ĞĞÊ×Ìí¼Ó //£¬Èç¹ûÑ¡ÖĞÒ»ĞĞµÄ²¿·ÖÄÚÈİÔòÔÚÑ¡ÖĞ²¿·ÖÇ°ºóÌí¼Ó·Ö±ğ /¡¢/
-"" <leader>cu£¬È¡ÏûÑ¡ÖĞÎÄ±¾¿éµÄ×¢ÊÍ
-"let NERDSpaceDelims = 1
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'Raimondi/delimitMate'
-"" ×Ô¶¯À¨ºÅ²¹È«
-"" https://github.com/Raimondi/delimitMate
-"" Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'godlygeek/tabular'
-"" ´úÂë¶ÔÆë
-"" https://github.com/godlygeek/tabular
-"" Vim script for text filtering and alignment
-"" ,bb °´=ºÅ¶ÔÆë´úÂë [Tabular²å¼ş]
-"nmap <leader>bb :Tab /=<CR>
-"" ,bn ×Ô¶¨Òå¶ÔÆë    [Tabular²å¼ş]
-"nmap <leader>bn :Tab /
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'scrooloose/syntastic'
-"" ¾²Ì¬´úÂë·ÖÎö
-"" https://github.com/scrooloose/syntastic
-"" Syntax checking hacks for vim
-"let g:syntastic_error_symbol = '7¾1'	"set error or warning signs
-"let g:syntastic_warning_symbol = '7²2'
-"let g:syntastic_check_on_open=1
-"let g:syntastic_enable_highlighting = 0
-""let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
-""let g:syntastic_python_checkers=['pyflakes']
-"""highlight SyntasticErrorSign guifg=white guibg=black
-"
-"let g:syntastic_cpp_include_dirs = ['/usr/include/']
-"let g:syntastic_cpp_remove_include_errors = 1
-"let g:syntastic_cpp_check_header = 1
-"let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
-"let g:syntastic_enable_balloons = 1	"whether to show balloons
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'vim-scripts/TaskList.vim'
-"" ¿ìËÙÌø×ªµ½TODOÁĞ±í
-"" https://github.com/vim-scripts/TaskList.vim
-"" Eclipse like task list 
-"map <leader>td <Plug>TaskList
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'genutils'
-"" ¹«ÓÃ¿â
-"" https://github.com/vim-scripts/genutils
-"" General utility functions
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'lookupfile'
-"" ²éÕÒÎÄ¼ş 
-"" https://github.com/vim-scripts/lookupfile
-"" Lookup files using Vim7 ins-completion
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'a.vim'
-"" ÔÚÍ·ÎÄ¼şºÍÊµÏÖÎÄ¼şÖ®¼äÇĞ»»
-"" https://github.com/vim-scripts/a.vim
-"" Alternate Files quickly (.c --> .h etc)
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'Mark'
-"" ¸ßÁÁ²»Í¬µÄÑÕÉ« 
-"" https://github.com/vim-scripts/Mark
-"" a little script to highlight several words in different colors simultaneously
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'echofunc.vim'
-""  ÔÚÃüÁîĞĞÏÔÊ¾º¯ÊıÉùÃ÷
-"" https://github.com/vim-scripts/echofunc.vim
-"" Echo the function declaration in the command line for C/C++
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'grep.vim'
-"" grepÔÚvimÖĞ¼¯³É
-"" https://github.com/vim-scripts/grep.vim
-"" Grep search tools integration with Vim
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'ctags.vim'
-"" ÔÚ±êÌâÀ¸ÏÔÊ¾º¯ÊıÃû
-"" https://github.com/vim-scripts/ctags.vim
-"" Display function name in the title bar.
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'cscope.vim'
-"" ´´½¨»òÓëÒÑ´æÔÚµÄcscopeÊı¾İ¿âÎÄ¼şÁ´½Ó
-"" https://github.com/vim-scripts/cscope.vim
-"" Create cscope database and connect to existing proper database automatically.
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'CCTree'
-"" CÓïÑÔµ÷ÓÃä¯ÀÀÆ÷ 
-"" https://github.com/vim-scripts/CCTree
-"" C Call-Tree Explorer - Source-code analysis, real-time display of code flow
+" æ”¯æŒpythonçš„è°ƒè¯•<c-r> <c-d>
+Plugin 'klen/python-mode'
 
+" powerline
+Plugin 'powerline/fonts'
+"Plugin 'powerline/powerline'
+Plugin 'Lokaltog/vim-powerline'
 
+" å¿«é€Ÿæ³¨é‡Š,<leader>cc/cu
+Plugin 'scrooloose/nerdcommenter'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin ''
-" 
-" 
-" 
-"
-
-"µ±Äã×Ô¼ºĞ´ÁË¸ö¶¨ÖÆµÄ²å¼ş£¬·ÅÔÚ±¾µØµÄÊ±ºò
-"Plugin 'file:///home/chenjunming/.vim/plugin/fold.vim'
-
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set mapleader
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"def global_setting {
 let mapleader = ","
 let g:mapleader= ","
 
-nmap <leader>e :e ~/.vimrc<cr>
-nmap <leader>s :source ~/.vimrc<cr>
-nmap <leader><leader> :w<cr>
-nmap <leader>w :w<cr>
-nmap <leader>q :q<cr>
-" ×Ô¶¯ÖØÔØ.vimrc
-autocmd! bufwritepost .vimrc source ~/.vimrc
+" nmap <leader>e :e ~/.vimrc<cr>
+" nmap <leader>s :source ~/.vimrc<cr>
+" ä¸easymotion å†²çªï¼Œhelp easymotion
+" nmap <leader><leader> :w<cr> 
+" nmap <leader>w :w<cr>
+" nmap <leader>q :q<cr>
+" }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-" ´ò¿ªnerdree´°¿Ú£¬ÔÚ×ó²àÀ¸ÏÔÊ¾
-nmap <silent><F2> :NERDTreeToggle<cr>
-nmap <leader>nt :NERDTreeToggle<CR>
-let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
-let g:netrw_home='~/bak'
-let g:NERDTreeWinSize=25
-"close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" def common_setting() {
 
-
-" ÉèÖÃtagsÎÄ¼ş
-set tags+=tags
-set tags+=../tags
-set tags+=~/tags
-" ´ò¿ªTaglist/TxtBrowser´°¿Ú£¬ÔÚÓÒ²àÀ¸ÏÔÊ¾
-nmap <leader>tl :Tlist<CR><c-l>
-" :Tlist,µ÷ÓÃTagList
-let Tlist_Ctags_Cmd='ctags'						" ÒòÎªÎÒÃÇ·ÅÔÚ»·¾³±äÁ¿Àï£¬ËùÒÔ¿ÉÒÔÖ±½ÓÖ´ĞĞ
-let Tlist_Show_One_File = 1						" Ö»ÏÔÊ¾µ±Ç°ÎÄ¼şµÄtags
-let Tlist_Exit_OnlyWindow = 1					" Èç¹ûTaglist´°¿ÚÊÇ×îºóÒ»¸ö´°¿ÚÔòÍË³öVim
-let Tlist_Use_Right_Window = 1					" ÔÚÓÒ²à´°¿ÚÖĞÏÔÊ¾
-let Tlist_File_Fold_Auto_Close = 1				" ×Ô¶¯ÕÛµş
-let Tlist_Sort_Type = "name"					" sorted by name
-let Tlist_Process_File_Always = 0					" ÊÇ·ñÒ»Ö±´¦Àítags.1:´¦Àí;0:²»´¦Àí¡£²»ÊÇÒ»Ö±ÊµÊ±¸üĞÂtags£¬ÒòÎªÃ»ÓĞ±ØÒª
-let Tlist_Inc_Winwidth = 0
-" Ctrl+]   Ctrl+o    Ctrl+T
-
-nmap <silent><F3> :TagbarToggle<CR>	" ,tb ´ò¿ªtagbar´°¿Ú
-nmap <leader>tb :TagbarToggle<CR>	" ,tb ´ò¿ªtagbar´°¿Ú
-let g:tagbar_autofocus = 1
-let g:tagbar_width = 30
-"autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
-
-
-let g:miniBufExplMaxSize = 3	" ÉèÖÃ×î´ó¸ß¶È 
-nmap <leader>bm :MBEToggle<cr>
-nmap <leader>bn :MBEbn<cr>
-nmap <leader>bp :MBEbp<cr>
-nmap <leader>bf :MBEbf<cr>
-nmap <leader>bb :MBEbb<cr>
-
-
-" :A ÔÚ.hÎÄ¼şºÍ.cppÎÄ¼şÖ®¼äÇĞ»»
-map <leader>a :A<cr>
-map <leader>av :AV<cr>
-
-" YouCompleateMe
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif		"Àë¿ª²åÈëÄ£Ê½ºó×Ô¶¯¹Ø±ÕÔ¤ÀÀ´°¿Ú
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"		"»Ø³µ¼´Ñ¡ÖĞµ±Ç°Ïî
-"ÉÏÏÂ×óÓÒ¼üµÄĞĞÎª »áÏÔÊ¾ÆäËûĞÅÏ¢
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-
-"Youcompleteme  Ä¬ÈÏtab  s-tab ºÍ×Ô¶¯²¹È«³åÍ»
-"let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_confirm_extra_conf=0 "¹Ø±Õ¼ÓÔØ.ycm_extra_conf.pyÌáÊ¾
-
-
-let g:ycm_collect_identifiers_from_tags_files=1	" ¿ªÆô YCM »ùÓÚ±êÇ©ÒıÇæ
-let g:ycm_min_num_of_chars_for_completion=2	"´ÓµÚ2¸ö¼üÈë×Ö·û¾Í¿ªÊ¼ÂŞÁĞÆ¥ÅäÏî
-let g:ycm_cache_omnifunc=0	" ½ûÖ¹»º´æÆ¥ÅäÏî,Ã¿´Î¶¼ÖØĞÂÉú³ÉÆ¥ÅäÏî
-let g:ycm_seed_identifiers_with_syntax=1	" Óï·¨¹Ø¼ü×Ö²¹È«
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>	"force recomile with syntastic
-"nnoremap <leader>lo :lopen<CR>	"open locationlist
-nnoremap <leader>lc :lclose<CR>	"close locationlist
-inoremap <leader><leader> <C-x><C-o>
-"ÔÚ×¢ÊÍÊäÈëÖĞÒ²ÄÜ²¹È«
-let g:ycm_complete_in_comments = 1
-"ÔÚ×Ö·û´®ÊäÈëÖĞÒ²ÄÜ²¹È«
-let g:ycm_complete_in_strings = 1
-"×¢ÊÍºÍ×Ö·û´®ÖĞµÄÎÄ×ÖÒ²»á±»ÊÕÈë²¹È«
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-
-nnoremap <silent><C-d> :YcmCompleter GoToDefinitionElseDeclaration<CR> " Ìø×ªµ½¶¨Òå´¦
-nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR> " Ìø×ªµ½¶¨Òå´¦
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" General setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! MySys()
-	if has("win32")
-		return "win32"
-	elseif has("unix")
-		return "unix"
-	else
-		return "mac"
-	endif
-endfunction
-
-if(has("win32") || has("win95") || has("win64") || has("win16"))
-	"ÅĞ¶¨µ±Ç°²Ù×÷ÏµÍ³ÀàĞÍ
-	let g:iswindows=1
-else
-	let g:iswindows=0
-endif
-
-autocmd BufEnter * lcd %:p:h
-
-" Ö¸Ïò×îºó´ò¿ªÎ»ÖÃ
-if has("autocmd")
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    " Also don't do it when the mark is in the first line, that is the default
-    " position when opening a file.
-    autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-endif " has("autocmd")
-
-" ¹Ø±Õvim¶ÔviµÄ¼æÈİÄ£Ê½£¬½¨ÒéÉèÖÃ£¬·ñÔò»áÓĞºÜ¶à²»¼æÈİµÄÎÊÌâ
+" å…³é—­vimå¯¹viçš„å…¼å®¹æ¨¡å¼ï¼Œå»ºè®®è®¾ç½®ï¼Œå¦åˆ™ä¼šæœ‰å¾ˆå¤šä¸å…¼å®¹çš„é—®é¢˜
 set nocompatible
 
-" ¿ªÆôÓï·¨¸ßÁÁ
+" å¼€å¯è¯­æ³•é«˜äº®
 syntax on
 
-" ÏÔÊ¾ĞĞºÅ
+" æ˜¾ç¤ºè¡Œå·
 set number
+set numberwidth=5
 
-" ´«ËµÖĞµÄÈ¥µô±ß¿òÓÃÏÂ±ßÕâÒ»¾ä,windowsÏÂ
+" ä¼ è¯´ä¸­çš„å»æ‰è¾¹æ¡†ç”¨ä¸‹è¾¹è¿™ä¸€å¥,windowsä¸‹
 set go=
 
-" ÉèÖÃ×ÖÌåÑÕÉ«
+" è®¾ç½®å­—ä½“é¢œè‰²
 color desert
 
-" ÉèÖÃ±³¾°É«£¬Ã¿ÖÖÅäÉ«ÓĞÁ½ÖÖ·½°¸£¬Ò»¸ölight¡¢Ò»¸ödark 
+" è®¾ç½®èƒŒæ™¯è‰²ï¼Œæ¯ç§é…è‰²æœ‰ä¸¤ç§æ–¹æ¡ˆï¼Œä¸€ä¸ªlightã€ä¸€ä¸ªdark 
 set background=dark
 
-" ÉèÖÃC·ç¸ñµÄËõ½ø 
+" è®¾ç½®Cé£æ ¼çš„ç¼©è¿› 
 set autoindent
 set smartindent
 
-" ½«Tab¼üÌæ»»Îª¿Õ¸ñ
+" å°†Tabé”®æ›¿æ¢ä¸ºç©ºæ ¼
 set expandtab
 
-" ÉèÖÃTab¿í¶ÈµÈÓÚ4¸ö¿Õ¸ñ
+" è®¾ç½®Tabå®½åº¦ç­‰äº4ä¸ªç©ºæ ¼
 set tabstop=4
 
-" Ä¬ÈÏËõ½ø4¸ö¿Õ¸ñ´óĞ¡ 
-set shiftwidth=4 
+" é»˜è®¤ç¼©è¿›4ä¸ªç©ºæ ¼å¤§å° 
+set shiftwidth=4
 
-" ÉèÖÃ°´ÍË¸ñ¼üÊ±¿ÉÒÔÒ»´ÎÉ¾³ı4¸ö¿Õ¸ñ
+" è®¾ç½®æŒ‰é€€æ ¼é”®æ—¶å¯ä»¥ä¸€æ¬¡åˆ é™¤4ä¸ªç©ºæ ¼
 set smarttab
 
-" ÉèÖÃµ¥´ÊÖĞ¼ä²»¶ÏĞĞ
+" è®¾ç½®å•è¯ä¸­é—´ä¸æ–­è¡Œ
 set lbr
 
-" ÖĞÎÄÖĞ¿ÉÒÔ¶ÏĞĞ£¬²»×Ô¶¯Ìí¼Ó¿Õ¸ñ
+" ä¸­æ–‡ä¸­å¯ä»¥æ–­è¡Œï¼Œä¸è‡ªåŠ¨æ·»åŠ ç©ºæ ¼
 set fo+=mB
 
-" ÉèÖÃ°´ÍË¸ñ¼üÊ±¿ÉÒÔÒ»´ÎÉ¾³ı4¸ö¿Õ¸ñ
+" è®¾ç½®æŒ‰é€€æ ¼é”®æ—¶å¯ä»¥ä¸€æ¬¡åˆ é™¤4ä¸ªç©ºæ ¼
 set softtabstop=4
 
-" ×Ô¶¯»»ĞĞ
-set wrap 
+" è‡ªåŠ¨æ¢è¡Œ
+set wrap
 
-" ÃüÁîĞĞ¸ß
+" å‘½ä»¤è¡Œé«˜
 set cmdheight=1
 
-" »º³åÇø¿ÕÔòÒş²Ø
+" ç¼“å†²åŒºç©ºåˆ™éšè—
 set hid
 
-" ¸ßÁÁÏÔÊ¾½á¹û
+" é«˜äº®æ˜¾ç¤ºç»“æœ
 set hlsearch
 
-" ÔÚÊäÈëÒªËÑË÷µÄÎÄ×ÖÊ±£¬vim»áÊµÊ±Æ¥Åä
+" åœ¨è¾“å…¥è¦æœç´¢çš„æ–‡å­—æ—¶ï¼Œvimä¼šå®æ—¶åŒ¹é…
 set incsearch
 
-" ÉèÖÃËÑË÷Ê±ºöÂÔ´óĞ¡Ğ´
+" è®¾ç½®æœç´¢æ—¶å¿½ç•¥å¤§å°å†™
 set ignorecase
 
-" ¾¡¿ÉÄÜÖÇÄÜËÑË÷
+" å°½å¯èƒ½æ™ºèƒ½æœç´¢
 set smartcase
 
-" ÆôÓÃÍ¨Åä·û
+" å¯ç”¨é€šé…ç¬¦
 set magic
 
-" ÇĞ»»´°¿Ú 
+" åˆ‡æ¢çª—å£ 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -646,345 +149,231 @@ map <C-up> <C-W>k
 map <C-left> <C-W>h
 map <C-right> <C-W>l
 
-" ·Ö¸î´°¿Ú
+" åˆ†å‰²çª—å£
 map <leader>v :vsplit<cr>
 map <leader>h :split<cr>
 
-" ¹Ø±ÕÆÁÄ»
+" å…³é—­å±å¹•
 map <leader>c :close<cr>
 map <leader>o :only<cr>
 
-" ¹Ø±Õµ±Ç°buffer
-map <leader>bd :Bclose<cr>
-
-" ¹Ø±ÕËùÓĞbuffer
-map <leader>ba :1,1000 bd!<cr>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" ¸ñÊ½»¯×´Ì¬À¸ 
+" æ ¼å¼åŒ–çŠ¶æ€æ  
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \Line:\ %l
 
-" Ê¹ÓÃShift+·½ÏòÑ¡ÖĞ
-"set keymodel=startsel,stopsel
-
-" ÉèÖÃ½øĞĞÑ¡ÔñÊ±£¬¹â±êËùÔÚ×Ö·ûÒ²±»Ñ¡ÖĞ
+" è®¾ç½®è¿›è¡Œé€‰æ‹©æ—¶ï¼Œå…‰æ ‡æ‰€åœ¨å­—ç¬¦ä¹Ÿè¢«é€‰ä¸­
 set selection=inclusive
-" set selection=exclusive
 
-" Ö»ÔÚÏÂÀ­²Ëµ¥ÖĞÏÔÊ¾Æ¥ÅäÏîÄ¿,×Ô¶¯²åÈëËùÓĞÆ¥ÅäÏîÄ¿µÄÏàÍ¬ÎÄ±¾
+" åªåœ¨ä¸‹æ‹‰èœå•ä¸­æ˜¾ç¤ºåŒ¹é…é¡¹ç›®,è‡ªåŠ¨æ’å…¥æ‰€æœ‰åŒ¹é…é¡¹ç›®çš„ç›¸åŒæ–‡æœ¬
 set completeopt=menu,longest
 
-" ÔÚwindows°æ±¾ÖĞvimµÄÍË¸ñ¼üÄ£Ê½Ä¬ÈÏÓëvi¼æÈİ, ÖØĞÂÅäÖÃbackspace¼ü¹¤×÷·½Ê½
-set backspace=indent,eol,start
-
-" ÉèÖÃµ½¹â±êµ½´ïĞĞÊ×/Î²Ê±£¬¼ÌĞø°´¼ü¿ÉÒÔ×Ô¶¯»»ĞĞ£¬Ä¬ÈÏ²»¿ªÆô
-" b:[Normal, Visual] backspace
-" s:[Normal, Visual] space
-" h:[Normal, Visual] h
-" l:[Normal, Visual] l
-" <:[Normal, Visual] ×ó·½Ïò¼ü
-" >:[Normal, Visual] ÓÒ·½Ïò¼ü
-" ~:[Normal] ~ [·­×ª´óĞ¡Ğ´]
-" [:[Insert, Replace] ×ó·½Ïò¼ü
-" ]:Insert, Replace] ÓÒ·½Ïò¼ü
-set whichwrap=b,s,h,l,<,>,[,]
-
-" ÉèÖÃÔÚ±à¼­¹ı³ÌÖĞÓÒÏÂ½ÇÏÔÊ¾¹â±êµÄĞĞÁĞĞÅÏ¢
+" è®¾ç½®åœ¨ç¼–è¾‘è¿‡ç¨‹ä¸­å³ä¸‹è§’æ˜¾ç¤ºå…‰æ ‡çš„è¡Œåˆ—ä¿¡æ¯
 set ruler
 
-" ÔÚ×´Ì¬À¸ÏÔÊ¾ÕıÔÚÊäÈëµÄÃüÁî
+" åœ¨çŠ¶æ€æ æ˜¾ç¤ºæ­£åœ¨è¾“å…¥çš„å‘½ä»¤
 set showcmd
 
-" ÔÚÃüÁîÄ£Ê½ÏÂÊ¹ÓÃ Tab ×Ô¶¯²¹È«µÄÊ±ºò£¬½«²¹È«ÄÚÈİÊ¹ÓÃÒ»¸öÆ¯ÁÁµÄµ¥ĞĞ²Ëµ¥ĞÎÊ½ÏÔÊ¾³öÀ´
+" åœ¨å‘½ä»¤æ¨¡å¼ä¸‹ä½¿ç”¨ Tab è‡ªåŠ¨è¡¥å…¨çš„æ—¶å€™ï¼Œå°†è¡¥å…¨å†…å®¹ä½¿ç”¨ä¸€ä¸ªæ¼‚äº®çš„å•è¡Œèœå•å½¢å¼æ˜¾ç¤ºå‡ºæ¥
 set wildmenu
 
-" Tab²¹È«µÄÊ±ºòºöÂÔ±àÒëÎÄ¼ş 
+" Tabè¡¥å…¨çš„æ—¶å€™å¿½ç•¥ç¼–è¯‘æ–‡ä»¶ 
 set wildignore=*.o,*~,*.pyc
 
-" ÉèÖÃÆ¥ÅäÄ£Ê½ ÀàËÆµ±ÊäÈëÒ»¸ö×óÀ¨ºÅÊ±»áÆ¥ÅäÏàÓ¦µÄÄÇ¸öÓÒÀ¨ºÅ
- set showmatch
+" é«˜äº®åŒ¹é…æ¨¡å¼
+set showmatch
 
-" ÉèÖÃÀúÊ·¼ÇÂ¼ÌõÊı
-set history=1000
+" è®¾ç½®å†å²è®°å½•æ¡æ•°
+set history=10000
 
-" ÉèÖÃ±¸·İ,¸ü¸ÄÎÄ¼şÊ±²»Éú³É±¸·İÎÄ¼ş~
+" è®¾ç½®å¤‡ä»½,æ›´æ”¹æ–‡ä»¶æ—¶ä¸ç”Ÿæˆå¤‡ä»½æ–‡ä»¶~
 set nobackup
 
-" ÉèÖÃµ±Ç°±àÂë·½Ê½
+" è®¾ç½®å½“å‰ç¼–ç æ–¹å¼
 set encoding=utf-8
 
-" ÉèÖÃÎÄ¼şÀàĞÍ
+" è®¾ç½®æ–‡ä»¶ç±»å‹
 set ffs=unix,dos,mac
 
-" µ±´ò¿ªÎÄ¼şÊ±£¬×Ô¶¯°´ÕÕÒÔÏÂ·½Ê½×Ô¶¯ÅĞ¶Ï±àÂë²¢½âÂë
+" å½“æ‰“å¼€æ–‡ä»¶æ—¶ï¼Œè‡ªåŠ¨æŒ‰ç…§ä»¥ä¸‹æ–¹å¼è‡ªåŠ¨åˆ¤æ–­ç¼–ç å¹¶è§£ç 
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-" ¿ªÆôÎÄ¼şÀàĞÍ×Ô¶¯Ê¶±ğ£¬ÆôÓÃÎÄ¼şÀàĞÍ²å¼ş£¬ÆôÓÃÕë¶ÔÎÄ¼şÀàĞÍµÄ×Ô¶¯Ëõ½ø
+" å¼€å¯æ–‡ä»¶ç±»å‹è‡ªåŠ¨è¯†åˆ«ï¼Œå¯ç”¨æ–‡ä»¶ç±»å‹æ’ä»¶ï¼Œå¯ç”¨é’ˆå¯¹æ–‡ä»¶ç±»å‹çš„è‡ªåŠ¨ç¼©è¿›
 filetype on
 filetype plugin on
 filetype indent on
 filetype plugin indent on
 
-" Èç¹ûÊÇc/c++ÀàĞÍ
-autocmd FileType c,cpp,h,cc :set number 
-" ´úÂëÕÛµş
-"autocmd FileType c,cpp :set foldmethod=syntax 
-" ¶ÔÆë
-autocmd FileType c,cpp,h,cc :set cindent
-
-" Èç¹ûÊÇpythonÎÄ¼ş
-autocmd FileType python :set number 
-"autocmd FileType python :set foldmethod=syntax 
-autocmd FileType python :set smartindent
-
-" ÕÛµş¿ì½İ¼ü
-" zc:ÕÛµşµ±Ç°
-" zo:´ò¿ªµ±Ç°
-" zn:´ò¿ªËùÓĞ
-" zN:ÕÛµşËùÓĞ
-
-" ×ÖÌåµÄÉèÖÃ
+" å­—ä½“çš„è®¾ç½®
 set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
 
-" ¼Ç×¡¿Õ¸ñÓÃÏÂ»®Ïß´úÌæÅ¶
-set gfw=Ó×Ô²:h10:cGB2312
+" è®°ä½ç©ºæ ¼ç”¨ä¸‹åˆ’çº¿ä»£æ›¿å“¦
+" set gfw=å¹¼åœ†:h10:cGB2312
 
-" ¶ÔÓÚUnicode×Ö·ûÖĞµÄÄ³Ğ©·ûºÅÓÃÁ½±¶¿í¶ÈÏÔÊ¾£¬ÈçÆÆÕÛºÅµÈ
+" å¯¹äºUnicodeå­—ç¬¦ä¸­çš„æŸäº›ç¬¦å·ç”¨ä¸¤å€å®½åº¦æ˜¾ç¤ºï¼Œå¦‚ç ´æŠ˜å·ç­‰
 set ambiwidth=double
 
-" ·ÀÖ¹linuxÖÕ¶ËÏÂÎŞ·¨¿½±´
+" é˜²æ­¢linuxç»ˆç«¯ä¸‹æ— æ³•æ‹·è´
 if has('mouse')
-	"set mouse=c
+    "set mouse=c
     set mouse=v
 endif
 
-
-" Õ³ÌùÊ±²»×Ô¶¯Ëõ½ø
-:set pastetoggle=<F11>
-
-" µ±ÒâÍâ¹Ø±ÕÊ±Éú³É»Ö¸´ÎÄ¼ş£¬ÎªÁË±£ÏÕÆğ¼û»¹ÊÇ²»È¡ÏûÁË
-" set noswapfile
-
-" Í»³öÏÔÊ¾µ±Ç°ĞĞ/ÁĞ
-" set cursorline
-" set cursorcolumn
-
-" ×Ô¶¯±£´æ
-" set autowrite
-
-" ÆôÓÃÆ´Ğ´¼ì²é,²»Ì«ÓÑºÃ
-" set spell
-
-" ²»¿ªÆô´íÎóÌáÊ¾Òô
+" ä¸å¼€å¯é”™è¯¯æç¤ºéŸ³
 set noerrorbells
 set novisualbell
+" }
 
-function! Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        if(g:iswindows==1)
-            let tagsdeleted=delete(dir."\\"."tags")
-        else
-            let tagsdeleted=delete("./"."tags")
-        endif
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    if filereadable("cscope.files")
-        if(g:iswindows==1)
-            let csfilesdeleted=delete(dir."\\"."cscope.files")
-        else
-            let csfilesdeleted=delete("./"."cscope.files")
-        endif
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    if filereadable("cscope.out")
-        if(g:iswindows==1)
-            let csoutdeleted=delete(dir."\\"."cscope.out")
-        else
-            let csoutdeleted=delete("./"."cscope.out")
-        endif
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-    if(executable('cscope') && has("cscope") )
-        if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.cc' > cscope.files"
-        else
-            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
-        endif
-		" -R: ÔÚÉú³ÉË÷ÒıÎÄ¼şÊ±£¬ËÑË÷×ÓÄ¿Â¼Ê÷ÖĞµÄ´úÂë
-		" -b: Ö»Éú³ÉË÷ÒıÎÄ¼ş£¬²»½øÈëcscopeµÄ½çÃæ
-		" -k: ÔÚÉú³ÉË÷ÒıÎÄ¼şÊ±£¬²»ËÑË÷/usr/includeÄ¿Â¼
-		" -q: Éú³Écscope.in.outºÍcscope.po.outÎÄ¼ş£¬¼Ó¿ìcscopeµÄË÷ÒıËÙ¶È
-        silent! execute "!cscope -bq -i cscope.files"
-        execute "normal :"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
-    endif
-    if(executable('ctags'))
-        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        "Èç¹û°Ñctags·Åµ½cscopeÉú³ÉÖ®ºó½øĞĞ£¬¿ÉÒÔÖ´ĞĞÏÂÃæÕâ¾ä£¬¼Ó¿ìËÙ¶È
-		silent! execute "!ctags -R --c++-kinds=+px --fields=+iaS --extra=+q -L cscope.files"
-        "silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-    endif
+" def key_mapping() {
+
+" æ˜¯å¦æ˜¾ç¤ºè¡Œå·
+:nmap <leader>l :setlocal number!<CR>
+
+" å¯ç”¨ç²˜è´´æ¨¡å¼
+:nmap <leader>p :set paste!<CR>
+
+" å…¨é€‰ï¼Œå¾ˆå¥½ç”¨ï¼
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+
+vmap <C-c> "+y
+" }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" def plugin_setting() {
+
+" def for YouCompleteMe (){
+
+let g:ycm_server_use_vim_stdout = 1
+
+" ç¦»å¼€æ’å…¥æ¨¡å¼åè‡ªåŠ¨å…³é—­é¢„è§ˆçª—å£
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" å›è½¦å³é€‰ä¸­å½“å‰é¡¹
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+
+" è®©Vimçš„è¡¥å…¨èœå•è¡Œä¸ºä¸ä¸€èˆ¬IDEä¸€è‡´
+set completeopt=longest,menu
+
+"ä¸Šä¸‹å·¦å³é”®çš„è¡Œä¸º ä¼šæ˜¾ç¤ºå…¶ä»–ä¿¡æ¯
+inoremap <expr> <Down>     pumvisible() ? "<C-n>" :"<Down>"
+inoremap <expr> <Up>       pumvisible() ? "<C-p>" :"<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "<PageDown><C-p><C-n>" :"<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "<PageUp><C-p><C-n>" :"<PageUp>"
+
+" Youcompleteme  é»˜è®¤tab  s-tab å’Œè‡ªåŠ¨è¡¥å…¨å†²çª
+"let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf=0 "å…³é—­åŠ è½½.ycm_extra_conf.pyæç¤º
+
+" å¼€å¯ YCM åŸºäºæ ‡ç­¾å¼•æ“
+let g:ycm_collect_identifiers_from_tags_files=1
+
+" ä»ç¬¬2ä¸ªé”®å…¥å­—ç¬¦å°±å¼€å§‹ç½—åˆ—åŒ¹é…é¡¹
+let g:ycm_min_num_of_chars_for_completion=2 
+
+" ç¦æ­¢ç¼“å­˜åŒ¹é…é¡¹,æ¯æ¬¡éƒ½é‡æ–°ç”ŸæˆåŒ¹é…é¡¹
+let g:ycm_cache_omnifunc=0  
+
+" è¯­æ³•å…³é”®å­—è¡¥å…¨
+let g:ycm_seed_identifiers_with_syntax=1
+
+" force recomile with syntastic
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+
+"åœ¨æ³¨é‡Šè¾“å…¥ä¸­ä¹Ÿèƒ½è¡¥å…¨
+let g:ycm_complete_in_comments = 1
+
+"åœ¨å­—ç¬¦ä¸²è¾“å…¥ä¸­ä¹Ÿèƒ½è¡¥å…¨
+let g:ycm_complete_in_strings = 1
+
+"æ³¨é‡Šå’Œå­—ç¬¦ä¸²ä¸­çš„æ–‡å­—ä¹Ÿä¼šè¢«æ”¶å…¥è¡¥å…¨
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+" è·³è½¬åˆ°å®šä¹‰å¤„
+nnoremap <leader>jh :YcmCompleter GoToDeclaration<CR>
+
+" è·³è½¬åˆ°å®šä¹‰å¤„
+nnoremap <leader>. :YcmCompleter GoToDefinitionElseDeclaration<CR> 
+
+" è·å–å˜é‡ç±»å‹ 
+nnoremap <leader>/ :YcmCompleter GetType<CR> 
+
+let g:ycm_python_binary_path = '/usr/bin/python'
+" }
+
+" def for plugin_a {
+" :A åœ¨.hæ–‡ä»¶å’Œ.cppæ–‡ä»¶ä¹‹é—´åˆ‡æ¢
+map <leader>a :A<cr>
+map <leader>av :AV<cr>
+" }
+
+" def for_powerline() {
+set guifont=PowerlineSymbols\ for\ Powerline
+set nocompatible
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+" }
+
+" def for_solarized() {
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+set background=dark
+set t_Co=256
+colorscheme solarized
+" }
+
+" def for_NERD_tree() {
+nmap <leader>f :NERDTreeToggle<CR>
+let NERDTreeWinSize=25
+let NERDTreeChDirMode=2
+let NERDTreeWinPos="left"
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+let g:netrw_home='~/bak'
+
+" ä»…æœ‰ä¸€ä¸ªNERDTreeçª—å£æ—¶ï¼Œå…³é—­ 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+" æ‰“å¼€vimæ²¡æœ‰è¾“å…¥æ–‡ä»¶åæ—¶ï¼Œè‡ªåŠ¨æ‰“å¼€NERTree
+" autocmd vimenter * if !argc() | NERDTree | endif
+
+" ä¸ºäº†è§£å†³ä¸€ä¸ªbug
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
 endfunction
+" }
 
-map <F12> :call Do_CsTag()<CR>
-nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+" def for_tagbar() {
+nmap <leader>t :TagbarToggle<CR>
+let g:tagbar_width=25
+let g:tagbar_autofocus = 1
+" }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" ÅäÉ«·½°¸
-"syntax enable
-"set background=dark
-""set background=dark
-"set t_Co=256
-"" below function is error on linux server
-""if g:isGUI
-"	colorscheme solarized
-"	"colorscheme molokai
-"	"colorscheme phd 
-""else
-"	"colorscheme solarized
-"	"colorscheme molokai
-"	"colorscheme phd
-""endif
+" def for_syntastic() {
+let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"internationalization
-"I only work in Win2k Chinese version
-"if has("multi_byte")
-"	set tenc=utf-8,gbk
-"	set fencs=utf-8,gbk
-"	set termencoding=utf-8
-"	set encoding=utf-8
-"	"set fileencodings=ucs-bom,utf-8,chinese
-"	set fileencoding=gb18030
-"	"set fileencodings=utf-8,gb18030,utf-16,big5
-"	set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-"endif
+" def for_multi_cursors() {
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+" }
 
+" def for_powerline() {
+"set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim
+" }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""if you use vim in tty,
-""'uxterm -cjk' or putty with option 'Treat CJK ambiguous characters as wide' on
-"if exists("&ambiwidth")
-"	set ambiwidth=double
-"endif
-"
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"if has("gui_running")
-"	"set guioptions-=m
-"	set guioptions-=T
-"	set guioptions-=l
-"	set guioptions-=L
-"	set guioptions-=r
-"	set guioptions-=R
-"
-"	if MySys()=="win32"
-"		"start gvim maximized
-"		if has("autocmd")
-"			au GUIEnter * simalt ~x
-"		endif
-"	endif
-"	"let psc_style='cool'
-"	"sudo cp ~/.vim/color/desert_my.vim /usr/share/vim/vim73/colors/
-"	"colorscheme desert_my
-"else
-"	"set background=dark
-"	"colorscheme desert_my
-"endif
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Below is part of the default setting of vim_sample
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Only do this part when compiled with support for autocommands.
-"if has("autocmd")
-"
-"  " Enable file type detection.
-"  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-"  " 'cindent' is on in C files, etc.
-"  " Also load indent files, to automatically do language-dependent indenting.
-"  filetype plugin indent on
-"
-"  " Put these in an autocmd group, so that we can delete them easily.
-"  augroup vimrcEx
-"  au!
-"
-"  " For all text files set 'textwidth' to 78 characters.
-"  autocmd FileType text setlocal textwidth=78
-"
-"  " When editing a file, always jump to the last known cursor position.
-"  " Don't do it when the position is invalid or when inside an event handler
-"  " (happens when dropping a file on gvim).
-"  " Also don't do it when the mark is in the first line, that is the default
-"  " position when opening a file.
-"  autocmd BufReadPost *
-"    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-"    \   exe "normal! g`\"" |
-"    \ endif
-"
-"  augroup END
-"
-"else
-"  set autoindent		" always set autoindenting on
-"endif " has("autocmd")
-"
-"" Convenient command to see the difference between the current buffer and the
-"" file it was loaded from, thus the changes you made.
-"" Only define it when not defined already.
-"if !exists(":DiffOrig")
-"  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-"		  \ | wincmd p | diffthis
-"endif
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => General Autocommand
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Switch to current dir
-"map <leader>cd :cd %:p:h<cr>
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Folding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Enable folding, I find it very useful
-"if exists("&foldenable")
-"set fen
-"endif
-"
-"if exists("&foldlevel")
-"set fdl=0
-"endif
-"
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" ÎÄ¼ş¸ñÊ½ 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Favorite filetype
-""Use Unix as the standard file type
-"set ffs=unix,dos,mac
-"
-"nmap <leader>fd :se ff=dos<cr>
-"nmap <leader>fu :se ff=unix<cr>
+" }

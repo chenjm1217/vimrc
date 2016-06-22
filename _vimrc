@@ -105,6 +105,9 @@ set shiftwidth=4
 " 设置按退格键时可以一次删除4个空格
 set smarttab
 
+" backspace支持删除
+set backspace=indent,eol,start
+
 " 设置单词中间不断行
 set lbr
 

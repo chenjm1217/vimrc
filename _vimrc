@@ -1,74 +1,59 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
+filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
+"
+" " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" 代码提示
+Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 
-" 主题色
-Plugin 'altercation/vim-colors-solarized'
-
-" 在.cpp和.h之间切换
-Plugin 'a.vim'
-
-" 语法分析
-Plugin 'scrooloose/syntastic'
-
-" python 提示
-Plugin 'davidhalter/jedi'
-
-" 同时编辑多个标签，重构神器
-Plugin 'terryma/vim-multiple-cursors'
-
-" 补全括号和引号
-Plugin 'Raimondi/delimitMate'
-
-" 目录浏览
-Plugin 'The-NERD-tree'
-
-" tag 浏览
-Plugin 'majutsushi/tagbar'
-
-" 神级插件，快速跳转，默认<leader><leader>w/f{char}/l{line-num}
-Plugin 'easymotion/vim-easymotion'
-
-" 查找文件，直接Ctrl+p,比lookupfiles更好用
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" 支持python的调试<c-r> <c-d>
-Plugin 'klen/python-mode'
-
-" powerline
-Plugin 'powerline/fonts'
-"Plugin 'powerline/powerline'
-Plugin 'Lokaltog/vim-powerline'
-
-" 快速注释,<leader>cc/cu
-Plugin 'scrooloose/nerdcommenter'
-
+Bundle 'scrooloose/nerdtree'
+Bundle 'Blackrush/vim-gocode'
+Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+"
+" " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"def global_setting {
+" Encdoing
+set encoding=utf-8
+
+syntax on
+:set t_Co=256
+colorscheme molokai
+
+set number
+set ruler
+set shiftwidth=4
+set cursorline
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set softtabstop=4
+set incsearch
+set autoindent
+set cindent
+
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 let g:mapleader= ","
 
-" nmap <leader>e :e ~/.vimrc<cr>
-" nmap <leader>s :source ~/.vimrc<cr>
-" 与easymotion 冲突，help easymotion
-" nmap <leader><leader> :w<cr> 
-" nmap <leader>w :w<cr>
-" nmap <leader>q :q<cr>
-" }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" def common_setting() {
+nmap <leader>e :e ~/.vimrc<cr>
+nmap <leader>s :source ~/.vimrc<cr>
+nmap <leader><leader> :w<cr>
+nmap <leader>w :w<cr>
+nmap <leader>q :q<cr>
 
 " 关闭vim对vi的兼容模式，建议设置，否则会有很多不兼容的问题
 set nocompatible
@@ -78,7 +63,6 @@ syntax on
 
 " 显示行号
 set number
-set numberwidth=5
 
 " 传说中的去掉边框用下边这一句,windows下
 set go=
@@ -100,13 +84,10 @@ set expandtab
 set tabstop=4
 
 " 默认缩进4个空格大小 
-set shiftwidth=4
+set shiftwidth=4 
 
 " 设置按退格键时可以一次删除4个空格
 set smarttab
-
-" backspace支持删除
-set backspace=indent,eol,start
 
 " 设置单词中间不断行
 set lbr
@@ -118,7 +99,7 @@ set fo+=mB
 set softtabstop=4
 
 " 自动换行
-set wrap
+set wrap 
 
 " 命令行高
 set cmdheight=1
@@ -160,14 +141,43 @@ map <leader>h :split<cr>
 map <leader>c :close<cr>
 map <leader>o :only<cr>
 
+" 关闭当前buffer
+map <leader>bd :Bclose<cr>
+
+" 关闭所有buffer
+map <leader>ba :1,1000 bd!<cr>
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
 " 格式化状态栏 
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \Line:\ %l
 
+" 使用Shift+方向选中
+"set keymodel=startsel,stopsel
+
 " 设置进行选择时，光标所在字符也被选中
 set selection=inclusive
+" set selection=exclusive
 
 " 只在下拉菜单中显示匹配项目,自动插入所有匹配项目的相同文本
 set completeopt=menu,longest
+
+" 在windows版本中vim的退格键模式默认与vi兼容, 重新配置backspace键工作方式
+set backspace=indent,eol,start
+
+" 设置到光标到达行首/尾时，继续按键可以自动换行，默认不开启
+" b:[Normal, Visual] backspace
+" s:[Normal, Visual] space
+" h:[Normal, Visual] h
+" l:[Normal, Visual] l
+" <:[Normal, Visual] 左方向键
+" >:[Normal, Visual] 右方向键
+" ~:[Normal] ~ [翻转大小写]
+" [:[Insert, Replace] 左方向键
+" ]:Insert, Replace] 右方向键
+set whichwrap=b,s,h,l,<,>,[,]
 
 " 设置在编辑过程中右下角显示光标的行列信息
 set ruler
@@ -181,23 +191,14 @@ set wildmenu
 " Tab补全的时候忽略编译文件 
 set wildignore=*.o,*~,*.pyc
 
-" 高亮匹配模式
-set showmatch
+" 设置匹配模式 类似当输入一个左括号时会匹配相应的那个右括号
+ set showmatch
 
 " 设置历史记录条数
-set history=10000
+set history=1000
 
 " 设置备份,更改文件时不生成备份文件~
 set nobackup
-
-" 设置当前编码方式
-set encoding=utf-8
-
-" 设置文件类型
-set ffs=unix,dos,mac
-
-" 当打开文件时，自动按照以下方式自动判断编码并解码
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 " 开启文件类型自动识别，启用文件类型插件，启用针对文件类型的自动缩进
 filetype on
@@ -205,178 +206,55 @@ filetype plugin on
 filetype indent on
 filetype plugin indent on
 
-" 字体的设置
-set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
+" 如果是c/c++类型
+autocmd FileType c,cpp,h,cc :set number 
+" 代码折叠
+"autocmd FileType c,cpp :set foldmethod=syntax 
+" 对齐
+autocmd FileType c,cpp,h,cc :set cindent
 
-" 记住空格用下划线代替哦
-" set gfw=幼圆:h10:cGB2312
+" 如果是python文件
+autocmd FileType python :set number 
+"autocmd FileType python :set foldmethod=syntax 
+autocmd FileType python :set smartindent
 
-" 对于Unicode字符中的某些符号用两倍宽度显示，如破折号等
-set ambiwidth=double
+" 折叠快捷键
+" zc:折叠当前
+" zo:打开当前
+" zn:打开所有
+" zN:折叠所有
 
-" 防止linux终端下无法拷贝
 if has('mouse')
     "set mouse=c
     set mouse=v
 endif
 
-" 不开启错误提示音
-set noerrorbells
-set novisualbell
-" }
+" 粘贴时不自动缩进
+:set pastetoggle=<F11>
 
-" def key_mapping() {
+"BufferExplorer in Airline
+"打开tabline功能,方便查看Buffer和切换,省去了minibufexpl插件
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" 是否显示行号
-:nmap <leader>l :setlocal number!<CR>
 
-" 启用粘贴模式
-:nmap <leader>p :set paste!<CR>
+"设置切换Buffer快捷键"
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
 
-" 全选，很好用！
-map <C-A> ggVGY
-map! <C-A> <Esc>ggVGY
+"Nerdtree
+map <F6> :NERDTreeToggle<CR>
 
-vmap <C-c> "+y
-" }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" def plugin_setting() {
-
-" def for YouCompleteMe (){
-
-let g:ycm_server_use_vim_stdout = 1
-
-" 离开插入模式后自动关闭预览窗口
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-" 回车即选中当前项
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-
-" 让Vim的补全菜单行为与一般IDE一致
-set completeopt=longest,menu
-
-"上下左右键的行为 会显示其他信息
-inoremap <expr> <Down>     pumvisible() ? "<C-n>" :"<Down>"
-inoremap <expr> <Up>       pumvisible() ? "<C-p>" :"<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "<PageDown><C-p><C-n>" :"<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "<PageUp><C-p><C-n>" :"<PageUp>"
-
-" Youcompleteme  默认tab  s-tab 和自动补全冲突
-"let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
-
-" 开启 YCM 基于标签引擎
-let g:ycm_collect_identifiers_from_tags_files=1
-
-" 从第2个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=2 
-
-" 禁止缓存匹配项,每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0  
-
-" 语法关键字补全
-let g:ycm_seed_identifiers_with_syntax=1
-
-" force recomile with syntastic
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-
-"在注释输入中也能补全
-let g:ycm_complete_in_comments = 1
-
-"在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
-
-"注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-" 跳转到定义处
-nnoremap <leader>jh :YcmCompleter GoToDeclaration<CR>
-
-" 跳转到定义处
-nnoremap <leader>. :YcmCompleter GoToDefinitionElseDeclaration<CR> 
-
-" 获取变量类型 
-nnoremap <leader>/ :YcmCompleter GetType<CR> 
-
-let g:ycm_python_binary_path = '/usr/bin/python'
-" }
-
-" def for plugin_a {
-" :A 在.h文件和.cpp文件之间切换
-map <leader>a :A<cr>
-map <leader>av :AV<cr>
-" }
-
-" def for_powerline() {
-set guifont=PowerlineSymbols\ for\ Powerline
-set nocompatible
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-" }
-
-" def for_solarized() {
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-set background=dark
-set t_Co=256
-colorscheme solarized
-" }
-
-" def for_NERD_tree() {
-nmap <leader>f :NERDTreeToggle<CR>
-let NERDTreeWinSize=25
-let NERDTreeChDirMode=2
-let NERDTreeWinPos="left"
-let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
-let g:netrw_home='~/bak'
-
-" 仅有一个NERDTree窗口时，关闭 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
-
-" 打开vim没有输入文件名时，自动打开NERTree
-" autocmd vimenter * if !argc() | NERDTree | endif
-
-" 为了解决一个bug
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-" }
-
-" def for_tagbar() {
-nmap <leader>t :TagbarToggle<CR>
-let g:tagbar_width=25
-let g:tagbar_autofocus = 1
-" }
-
-" def for_syntastic() {
-let g:syntastic_check_on_open=1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" }
-
-" def for_multi_cursors() {
-" Default mapping
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-" }
-
-" def for_powerline() {
-"set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim
-" }
-
-" }
+" 显示行号
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+" " 是否显示隐藏文件
+let NERDTreeShowHidden=1
+" " 设置宽度
+let NERDTreeWinSize=31
+" " 在终端启动vim时，共享NERDTree
+"let g:nerdtree_tabs_open_on_console_startup=1
+" " 忽略一下文件的显示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+" " 显示书签列表
+let NERDTreeShowBookmarks=1
